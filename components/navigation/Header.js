@@ -14,7 +14,7 @@ const Navbar = styled.nav`
   top: 0;
   display: flex;
   justify-content: flex-end;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.primaryYellow};
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   z-index: 100;
   @media (min-width: 768px) {
@@ -39,12 +39,11 @@ const NavItem = styled.li`
   font-size: 1.333rem;
   height: 80%;
   display: none;
+  color: #fff;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: blue;
-    color: #fff;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    color: #333;
   }
 
   a {

@@ -121,3 +121,10 @@ a {
     @content;
   }
 }
+
+.hero {
+  width: 100%;
+  min-height: 50vh;
+  background: left 0 / cover no-repeat
+    url("https://images.pexels.com/photos/539432/pexels-photo-539432.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+}

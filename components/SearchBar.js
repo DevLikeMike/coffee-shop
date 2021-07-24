@@ -5,6 +5,9 @@ const Search = styled.input`
   padding: 0.25rem 0.5rem;
   font-size: 1rem;
   min-width: 13rem;
+  border-radius: 5px;
+  border: 1px solid #333;
+  outline-offset: 1px;
 `;
 
 export default function SearchBar() {
