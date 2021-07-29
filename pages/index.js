@@ -7,9 +7,21 @@ export default function Home({ coffees }) {
     <Layout>
       <main className='mt-3 homescreen'>
         <div className='hero'>
-          <h1>Coffee Cabinet</h1>
+          <h1 style={{ color: "#fff" }}>Coffee Cabinet</h1>
         </div>
-        <h2 className='text-center'>Fan Favorites</h2>
+        <section className='flex flex-center'>
+          <h2>{"<Coffee To Code By />"}</h2>
+        </section>
+        <section className='section-dark flex flex-center'>
+          <h2>
+            We are a virtual coffee shop dedicated to serving you all the coffee
+            you can ask for. We aim to please with our hot, iced, and decafe
+            coffee products.
+          </h2>
+        </section>
+        <h2 className='text-center' style={{ margin: "1rem 0" }}>
+          Fan Favorites
+        </h2>
         {coffees.length === 0 && <h2>No coffees here 😭</h2>}
 
         {coffees.map((cof) => (

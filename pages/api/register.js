@@ -1,31 +1,29 @@
-// "MIDDLEWARE" take in POST req from app and send that post to Strapi our CMS
-// Imports
 import cookie from "cookie";
 import { API_URL } from "@/config/index";
 
 export default async (req, res) => {
   if (req.method === "POST") {
-    // Strapi calls email Identifier
-    const { identifier, password } = req.body;
+    // Destruct req.body
+    const { username, email, password } = req.body;
 
-    // Send post req to strapi when app/api/login is hit
-    const strapiRes = await fetch(`${API_URL}/auth/local`, {
+    // POST to strapi
+    const strapiRes = await fetch(`${API_URL}/auth/local/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        identifier,
+        username,
+        email,
         password,
       }),
     });
 
-    // Strapi's response is a JWT and the info specified
     const data = await strapiRes.json();
+    // Recieve strapi jwt just as login, but also with new user
 
     if (strapiRes.ok) {
-      // Set Cookie using cookie npm package
-      console.log(data);
+      // Set Cookie
       res.setHeader(
         "Set-Cookie",
         cookie.serialize("token", data.jwt, {
@@ -41,13 +39,11 @@ export default async (req, res) => {
     } else {
       res
         .status(data.statusCode)
-        // Strapi has odd error message, lots of drilling
+        // Drill for strapi error message
         .json({ message: data.message[0].messages[0].message });
     }
   } else {
-    // Only allow post req
     res.setHeader("Allow", ["POST"]);
-    // If not post Send error message
     res.status(405).json({ message: `Method ${req.method} not allowed` });
   }
 };

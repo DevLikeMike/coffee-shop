@@ -37,6 +37,11 @@ a {
   color: inherit;
 }
 
+button:hover,
+input[type="submit"] {
+  cursor: pointer;
+}
+
 // Helper classes
 
 .text-center {
@@ -67,8 +72,7 @@ a {
   margin: 1rem;
 }
 
-.light-blue {
-  margin: 0 1rem;
+.link-blue {
   color: #3fbcff;
 }
 
