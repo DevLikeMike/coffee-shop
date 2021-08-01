@@ -5,7 +5,12 @@ import router from "next/router";
 import Hamburger from "./Hamburger";
 import SideNav from "./SideNav";
 import AuthContext from "@/context/AuthContext";
-import { FaSignOutAlt, FaSignInAlt, FaUser } from "react-icons/fa";
+import {
+  FaSignOutAlt,
+  FaSignInAlt,
+  FaUser,
+  FaShoppingCart,
+} from "react-icons/fa";
 // External imports
 import styled from "styled-components";
 
@@ -87,8 +92,8 @@ export default function Header() {
         </NavItem>
 
         <NavItem>
-          <Link href='/about'>
-            <a>About</a>
+          <Link href='/menu'>
+            <a>Menu</a>
           </Link>
         </NavItem>
 
@@ -101,6 +106,13 @@ export default function Header() {
                   {" "}
                   <FaUser style={{ marginRight: "5px", fontSize: "1.2rem" }} />
                   {user.username}
+                </a>
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link href='/cart'>
+                <a>
+                  <FaShoppingCart />
                 </a>
               </Link>
             </NavItem>

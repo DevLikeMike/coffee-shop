@@ -4,7 +4,12 @@ import router from "next/router";
 // Component
 import AuthContext from "@/context/AuthContext";
 // Icons
-import { FaSignOutAlt, FaSignInAlt, FaUser } from "react-icons/fa";
+import {
+  FaSignOutAlt,
+  FaSignInAlt,
+  FaUser,
+  FaShoppingCart,
+} from "react-icons/fa";
 
 const SideNav = ({ sideOpen, openHandler }) => {
   // Context Init
@@ -30,9 +35,6 @@ const SideNav = ({ sideOpen, openHandler }) => {
         <li className='sideNav-item' onClick={onClick}>
           <Link href='/menu'>Menu</Link>
         </li>
-        <li className='sideNav-item' onClick={onClick}>
-          <Link href='/about'>About</Link>
-        </li>
         {user ? (
           // If logged in
           <>
@@ -44,6 +46,13 @@ const SideNav = ({ sideOpen, openHandler }) => {
                     style={{ marginRight: "5px", fontSize: "1.2rem" }}
                   />{" "}
                   {user.username}
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href='/cart'>
+                <a>
+                  <FaShoppingCart />
                 </a>
               </Link>
             </li>

@@ -12,6 +12,12 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => checkUserLoggedIn(), []);
 
+  /***********************************************************************
+   * Each action/method is hitting the "NEXT_URL"
+   * This is the built in next api, which then hits Strapi's API via API_URL
+   * The Strapi response is then used to set or unset JWT via HTTPS cookies
+   ************************************************************************/
+
   // Register user
   const register = async (user) => {
     const res = await fetch(`${NEXT_URL}/api/register`, {

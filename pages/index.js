@@ -19,14 +19,16 @@ export default function Home({ coffees }) {
             coffee products.
           </h2>
         </section>
-        <h2 className='text-center' style={{ margin: "1rem 0" }}>
-          Fan Favorites
-        </h2>
-        {coffees.length === 0 && <h2>No coffees here 😭</h2>}
+        <section>
+          <h2 className='text-center' style={{ margin: "1rem 0" }}>
+            Fan Favorites
+          </h2>
+          {coffees.length === 0 && <h2>No coffees here 😭</h2>}
 
-        {coffees.map((cof) => (
-          <CoffeeItem key={cof.id} coffee={cof} />
-        ))}
+          {coffees.map((cof) => (
+            <CoffeeItem key={cof.id} coffee={cof} />
+          ))}
+        </section>
       </main>
     </Layout>
   );
