@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 const Card = styled.div`
   display: flex;
@@ -36,13 +37,14 @@ const Card = styled.div`
     .description {
       grid-area: 2/1/3/3;
     }
-    button {
+    .linkTo {
       grid-area: 3/2/4/3;
       background-color: transparent;
       color: brown;
       border: 1px solid brown;
       border-radius: 8px;
       padding: 0.5rem;
+      text-align: center;
     }
     .type {
       position: absolute;
@@ -83,7 +85,9 @@ export default function CoffeeItem({ coffee }) {
         <p className='price'>$ {price}</p>
         <p className='description'>{description}</p>
         <p className='type'>{type}</p>
-        <button onClick={clickHandler}>Add To Cart</button>
+        <Link href={`/coffees/${slug}`}>
+          <a className='linkTo'>Add To Cart</a>
+        </Link>
       </div>
     </Card>
   );
