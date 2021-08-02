@@ -20,8 +20,29 @@ export const CartProvider = ({ children }) => {
 
   // Add item to cart
   const addCartItem = (item) => {
-    // Make sure item is not an empty obj
-    if (item !== {}) {
+    // check to see if the item is already in cart and is same size
+    const itemExists = cartItems.find(
+      (cartItem) => cartItem.id === item.id && cartItem.size === item.size
+    );
+
+    // If item does exists, then add the quantities together.
+    if (itemExists) {
+      setCartItems(
+        cartItems.map((cartItem) => {
+          if (
+            cartItem.id === itemExists.id &&
+            cartItem.size === itemExists.size
+          ) {
+            itemExists.quantity =
+              parseInt(cartItem.quantity, 10) + parseInt(item.quantity, 10);
+            return itemExists;
+          } else {
+            return cartItem;
+          }
+        })
+      );
+    } else {
+      // If item does not exist then just add it to cart
       // Every time an item is added to cart, save it to local storage
       setCartItems([...cartItems, item]);
     }
@@ -36,8 +57,14 @@ export const CartProvider = ({ children }) => {
 
   // Delete item from cart
   const deleteCartItem = (item) => {
-    const name = item.name;
-    let filterdItems = cartItems.filter((item) => item.name !== name);
+    let filterdItems = cartItems.filter((cartItem) => {
+      // Make sure items match by size and id
+      if (cartItem.id === item.id && cartItem.size === item.size) {
+        return;
+      } else {
+        return cartItem;
+      }
+    });
     setCartItems(filterdItems);
   };
 

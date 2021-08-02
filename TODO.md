@@ -3,7 +3,7 @@
 ## Functionality
 
 - [x] Delete Item from Cart
-- [] Better Navigation
+- [x] Better Navigation
 - [] If item exists in cart, increase quantity by 1, only if size also matches
 - [] Add size to coffees/slug page to pass to cart item
 - [] Toastify for adding to cart, green if success, red if error
@@ -18,5 +18,5 @@
 - [] Shipment Page
 - [] Payment Page
 - [] Dashboard Page
-- [] Menu Page
-- [] Hot and Iced and Tea and Decaf
+- [x] Menu Page
+- [x] Hot and Iced and Tea and Decaf

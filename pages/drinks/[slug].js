@@ -27,8 +27,6 @@ export async function getServerSideProps({ query: { slug } }) {
   const res = await fetch(`${API_URL}/coffees?type=${querySlug}`);
   const drinks = await res.json();
 
-  console.log(drinks);
-
   return {
     props: { drinks, titleSlug },
   };

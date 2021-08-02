@@ -22,7 +22,7 @@ export default function CartPage() {
           cartItems.map((item) => (
             <CartItem
               item={item}
-              key={item.orderNumber}
+              key={`${item.id} ${item.size}`}
               deleteCartItem={deleteCartItem}
             ></CartItem>
           ))

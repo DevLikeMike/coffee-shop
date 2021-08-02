@@ -8,7 +8,7 @@ const Item = styled.div`
 `;
 
 export default function CartItem({ item, deleteCartItem }) {
-  const { name, quantity, price } = item;
+  const { name, quantity, price, size } = item;
 
   const clickHandler = (e) => {
     deleteCartItem(item);
@@ -19,6 +19,7 @@ export default function CartItem({ item, deleteCartItem }) {
       <p>{name}</p>
       <p>{quantity}</p>
       <p>{price}</p>
+      <p>{size}</p>
       <button onClick={clickHandler}>Delete</button>
     </Item>
   );

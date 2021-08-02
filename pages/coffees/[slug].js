@@ -6,10 +6,16 @@ import CartContext from "@/context/CartContext";
 export default function CoffeePage({ coffee }) {
   const [cartItem, setcartItem] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState("medium");
+
+  const checkHandler = (e) => {
+    setSize(e.target.value);
+  };
 
   const { addCartItem } = useContext(CartContext);
 
-  const clickHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
     addCartItem(cartItem);
   };
 
@@ -21,11 +27,11 @@ export default function CoffeePage({ coffee }) {
     setcartItem({
       name: coffee.name,
       quantity: quantity,
-      orderNumber: Math.ceil(Math.random() * 1000000 - 1),
-      date: Date.now(),
+      id: coffee.id,
       price: coffee.price,
+      size: size,
     });
-  }, [quantity]);
+  }, [quantity, size]);
 
   return (
     <Layout>
@@ -38,14 +44,27 @@ export default function CoffeePage({ coffee }) {
         />
         <h1>{coffee.name}</h1>
         <p>{coffee.description}</p>
-        <input
-          type='number'
-          value={quantity}
-          min='1'
-          max='10'
-          onChange={changeHandler}
-        />
-        <button onClick={clickHandler}>Add To Cart</button>
+        <form onSubmit={submitHandler}>
+          <input
+            type='number'
+            value={quantity}
+            min='1'
+            max='10'
+            onChange={changeHandler}
+          />
+          <div className='form-group radio-group' onChange={checkHandler}>
+            <input type='radio' name='size' value='small' />
+            <label htmlFor='size'>Small</label>
+            <br />
+            <input type='radio' name='size' value='medium' />
+            <label htmlFor='size'>Medium</label>
+            <br />
+            <input type='radio' name='size' value='large' />
+            <label htmlFor='size'>Large</label>
+            <br />
+          </div>
+          <input type='submit' value='Add to cart' />
+        </form>
       </main>
     </Layout>
   );
