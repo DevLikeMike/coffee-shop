@@ -1,8 +1,11 @@
 .homescreen {
   section {
     min-height: 20vh;
-    padding: 0 2rem;
     color: #333;
+
+    @include md-mobile {
+      padding: 0 2rem;
+    }
 
     h2 {
       font-size: 1.5rem;

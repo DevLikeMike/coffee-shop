@@ -1,4 +1,4 @@
-import CoffeeItem from "@/components/CoffeeItem";
+import BeverageItem from "@/components/BeverageItem";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 
@@ -26,7 +26,7 @@ export default function Home({ coffees }) {
           {coffees.length === 0 && <h2>No coffees here 😭</h2>}
 
           {coffees.map((cof) => (
-            <CoffeeItem key={cof.id} coffee={cof} />
+            <BeverageItem key={cof.id} coffee={cof} />
           ))}
         </section>
       </main>
@@ -36,7 +36,9 @@ export default function Home({ coffees }) {
 
 export async function getStaticProps() {
   const res = await fetch(`${API_URL}/coffees`);
-  const coffees = await res.json();
+  let coffees = await res.json();
+
+  coffees = coffees.slice(0, 3);
 
   return {
     props: { coffees },

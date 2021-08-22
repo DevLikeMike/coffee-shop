@@ -34,7 +34,7 @@ export default function CategoryItem({ category }) {
   const { type, image, slug } = category;
 
   return (
-    <Link href={`/drinks/${slug}`}>
+    <Link href={`/categories/${slug}`}>
       <Card>
         <Image
           src={image.formats.large.url}

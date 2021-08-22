@@ -5,6 +5,7 @@ import { NEXT_URL } from "@/config/index";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  // Initial State
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
@@ -86,6 +87,8 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
     }
   };
+
+  const editUserInformation = async (user) => {};
 
   return (
     <AuthContext.Provider value={{ user, error, register, login, logout }}>

@@ -1,0 +1,55 @@
+.coffee {
+  .image_container {
+    height: 45vh;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    padding: 0 0.5rem;
+
+    h1 {
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 1.85rem;
+    }
+  }
+
+  form {
+    padding: 0 0.5rem;
+    width: 100%;
+
+    input,
+    select {
+      width: 100%;
+      margin: 1rem 0;
+      padding: 0.5rem 0;
+      font-size: 1rem;
+      outline-color: #a5652a;
+    }
+    input[type="submit"] {
+      background-color: transparent;
+      border: #a5652a 1px solid;
+      border-radius: 8px;
+      padding: 0.5rem 2rem;
+      margin: 1rem 0;
+      color: #a5652a;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #a5652a;
+        color: white;
+      }
+    }
+  }
+
+  @include md-mobile {
+    padding-top: 2rem;
+  }
+}

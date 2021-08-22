@@ -18,6 +18,8 @@ export default function CartPage() {
   return (
     <Layout>
       <main className='mt-3'>
+        <h1 className='text-center'>Cart Items</h1>
+        {cartItems == [] && <h1>hello</h1>}
         {!loading ? (
           cartItems.map((item) => (
             <CartItem
@@ -27,7 +29,7 @@ export default function CartPage() {
             ></CartItem>
           ))
         ) : (
-          <h1>Loading</h1>
+          <h1 className='text-center'>Loading</h1>
         )}
       </main>
     </Layout>

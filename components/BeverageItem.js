@@ -7,9 +7,9 @@ const Card = styled.a`
   align-items: center;
   flex-direction: column;
   text-align: center;
-  margin: 1rem 0;
+  margin: 1rem 0 1.5rem 0;
   position: relative;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   gap: 1rem;
   transition: all 0.3s ease-in-out;
 
@@ -38,28 +38,31 @@ const Card = styled.a`
     flex-direction: column;
     flex-wrap: wrap;
     padding: 0 0.5rem;
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
   }
 `;
 
-export default function CoffeeItem({ coffee }) {
+export default function BeverageItem({ coffee }) {
   const { description, name, type, image, price, slug } = coffee;
 
   return (
-    <Link href={`/coffees/${slug}`}>
+    <Link href={`/beverages/${slug}`}>
       <Card>
         <Image
           src={image.formats.large.url}
           alt={image.name}
-          width='150'
-          height='150'
+          width='125'
+          height='125'
           className='thumbnail'
           layout='fixed'
         />
         <div className='card__content'>
           <h3 className='title'>{name}</h3>
-          <p className='description'>{description}</p>
           <p className='price'>$ {price}</p>
-          <p className='type'>{type}</p>
         </div>
       </Card>
     </Link>

@@ -5,7 +5,8 @@ import { NEXT_URL } from "@/config/index";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // Define cartItemsFromStorage to allow it to be in the scope of the function
+  // Initial State
+  const [shippingAddress, setShippingAddress] = useState({});
   let cartItemsFromStorage;
 
   // Check for Items in localstorage
@@ -33,8 +34,7 @@ export const CartProvider = ({ children }) => {
             cartItem.id === itemExists.id &&
             cartItem.size === itemExists.size
           ) {
-            itemExists.quantity =
-              parseInt(cartItem.quantity, 10) + parseInt(item.quantity, 10);
+            itemExists.quantity = cartItem.quantity + 1;
             return itemExists;
           } else {
             return cartItem;
@@ -68,8 +68,16 @@ export const CartProvider = ({ children }) => {
     setCartItems(filterdItems);
   };
 
+  const saveShippingAddress = (shipAddress) => {
+    setShippingAddress(shipAddress);
+
+    localStorage.setItem("shippingAddress", JSON.stringify(shipAddress));
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addCartItem, deleteCartItem }}>
+    <CartContext.Provider
+      value={{ cartItems, addCartItem, deleteCartItem, shippingAddress }}
+    >
       {children}
     </CartContext.Provider>
   );
