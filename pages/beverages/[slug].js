@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import CartContext from "@/context/CartContext";
+import { useRouter } from "next/router";
 
 export default function CoffeePage({ coffee }) {
   // Init states
@@ -10,6 +11,9 @@ export default function CoffeePage({ coffee }) {
 
   // Init context
   const { addCartItem } = useContext(CartContext);
+
+  // Init router
+  const router = useRouter();
 
   // Update cartItem on size change
   useEffect(() => {
@@ -31,6 +35,7 @@ export default function CoffeePage({ coffee }) {
   const submitHandler = (e) => {
     e.preventDefault();
     addCartItem(cartItem);
+    router.push("/cart");
   };
 
   return (

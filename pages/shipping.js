@@ -1,9 +1,14 @@
+// React imports
 import { useContext, useState, useEffect } from "react";
-import Layout from "@/components/Layout";
-import AuthContext from "@/context/AuthContext";
+// Next import
 import { useRouter } from "next/router";
+// Components and context imports
+import Layout from "@/components/Layout";
+import TrackerContainer from "@/components/TrackerContainer";
+import CheckoutTracker from "@/components/CheckoutTracker";
+import AuthContext from "@/context/AuthContext";
 
-export default function ShippingPage({ history }) {
+export default function ShippingPage() {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [country, setCountry] = useState("");
@@ -21,16 +26,30 @@ export default function ShippingPage({ history }) {
       setCity(user.shippingAddress.city);
       setCountry(user.shippingAddress.country);
       setPostalCode(user.shippingAddress.postalCode);
-    } else {
-      //   router.push("/account/login");
     }
   }, [user]);
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, []);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    router.push("/payment");
+  };
 
   return (
     <Layout>
       <main className='mt-3 shipping'>
         <h1 className='text-center'>Shipping Info</h1>
-        <form>
+        <TrackerContainer>
+          <CheckoutTracker href='/shipping'>Shipping</CheckoutTracker>
+          <CheckoutTracker href='/payment'>Payment</CheckoutTracker>
+          <CheckoutTracker href='/confirm'>Confirm Order</CheckoutTracker>
+        </TrackerContainer>
+        <form onSubmit={submitHandler}>
           <label htmlFor='address'>Address Line 1:</label>
           <input
             type='text'
@@ -38,6 +57,7 @@ export default function ShippingPage({ history }) {
             placeholder='Please enter your address'
             onChange={(e) => setAddress(e.target.value)}
             value={address}
+            required
           />
           <label htmlFor='city'>City</label>
           <input
@@ -46,6 +66,7 @@ export default function ShippingPage({ history }) {
             placeholder='Please enter your city'
             onChange={(e) => setCity(e.target.value)}
             value={city}
+            required
           />
           <label htmlFor='postalCode'>Postal Code</label>
           <input
@@ -54,6 +75,7 @@ export default function ShippingPage({ history }) {
             placeholder='Please enter your postal code.'
             onChange={(e) => setPostalCode(e.target.value)}
             value={postalCode}
+            required
           />
           <label htmlFor='country'>Country</label>
           <input
@@ -62,6 +84,7 @@ export default function ShippingPage({ history }) {
             placeholder='Please enter your country'
             onChange={(e) => setCountry(e.target.value)}
             value={country}
+            required
           />
           <input type='submit' value='Continue' />
         </form>

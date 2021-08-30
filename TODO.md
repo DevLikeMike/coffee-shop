@@ -10,14 +10,26 @@
 - [] Save order to user for recent orders, only save 3.
 - [] Allow order to be saved to favorites.
 - [x] Add more items for better testing.
-- [] Change drinks to categories and change coffees to drinks
+- [x] Change drinks to categories and change coffees to drinks
 
 ## Pages
 
 - [x] Cart Page
+- [x] Admin Page
+    - Items, edit add and delete
 - [] Order's Page
+    - Display Shipping address, payment method, order items and quantity
 - [] Shipment Page
+    - Form for shipping address, save to user, save in state
 - [] Payment Page
+    - Stripe payment
 - [] Dashboard Page
+    - Recent orders
+    - Favorites
+    - Edit user info
 - [x] Menu Page
 - [x] Hot and Iced and Tea and Decaf
+
+## Styles
+
+

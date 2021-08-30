@@ -35,6 +35,13 @@ main.mt-3 {
   }
 }
 
+.p1 {
+  padding: 0.5rem 0;
+  @media (min-width: 768px) {
+    padding: 0.5rem 1rem;
+  }
+}
+
 li {
   list-style: none;
 }

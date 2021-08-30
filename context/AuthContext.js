@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   // Initial State
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [orders, setOrders] = useState(null);
 
   const router = useRouter();
 
@@ -88,10 +89,23 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const getUserOrders = async (user) => {
+    const res = await fetch(`${NEXT_URL}/api/userOrders`);
+    const data = await res.json();
+
+    if (res.ok) {
+      setOrders(data);
+    } else {
+      setOrders(null);
+    }
+  };
+
   const editUserInformation = async (user) => {};
 
   return (
-    <AuthContext.Provider value={{ user, error, register, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, error, orders, register, login, logout, getUserOrders }}
+    >
       {children}
     </AuthContext.Provider>
   );

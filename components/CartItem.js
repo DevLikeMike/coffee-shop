@@ -14,6 +14,8 @@ const Item = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     gap: 0.25rem;
+    flex: 1;
+    max-width: 20rem;
 
     h2 {
       font-size: 1.2rem;
@@ -22,10 +24,15 @@ const Item = styled.div`
 
     button {
       background-color: transparent;
-      border: brown 1px solid;
+      border: #333 1px solid;
       border-radius: 8px;
       padding: 0.5rem 1rem;
       width: 100%;
+
+      &:hover {
+        background-color: #333;
+        color: #fff;
+      }
     }
   }
 
@@ -36,7 +43,6 @@ const Item = styled.div`
 
 export default function CartItem({ item, deleteCartItem }) {
   const { name, quantity, price, size, image } = item;
-  console.log(image);
 
   const clickHandler = (e) => {
     deleteCartItem(item);
