@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import CartContext from "@/context/CartContext";
 import CartItem from "@/components/CartItem";
 import Layout from "@/components/Layout";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export default function CartPage() {
   const [loading, setLoading] = useState(true);

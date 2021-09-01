@@ -6,6 +6,7 @@ import TrackerContainer from "@/components/TrackerContainer";
 import CheckoutTracker from "@/components/CheckoutTracker";
 import AuthContext from "@/context/AuthContext";
 import CartContext from "@/context/CartContext";
+import PayBTN from "@/components/PayBTN";
 
 export default function Payment() {
   const { user } = useContext(AuthContext);
@@ -33,7 +34,10 @@ export default function Payment() {
           </div>
           <div className='cartSide'>
             {cartItems.map((item) => (
-              <p>{item.name}</p>
+              <div key={item.id}>
+                <p>{item.name}</p>
+                <PayBTN item={item.id} />
+              </div>
             ))}
           </div>
         </div>
