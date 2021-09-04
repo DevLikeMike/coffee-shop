@@ -40,7 +40,8 @@ export default function CoffeePage({ coffee }) {
 
   return (
     <Layout>
-      <main className='mt-3 coffee'>
+      <main className='mt-3 beverage'>
+        <h1>{coffee.name}</h1>
         <div className='image_container'>
           <img
             src={coffee.image.formats.large.url}
@@ -49,9 +50,10 @@ export default function CoffeePage({ coffee }) {
             height='450'
           />
         </div>
+
         <div className='content'>
-          <h1>{coffee.name}</h1>
           <p>{coffee.description}</p>
+          <div>{coffee.price}</div>
         </div>
         <form onSubmit={submitHandler}>
           <select name='size' id='size' onChange={sizeHandler}>

@@ -16,20 +16,18 @@
 
 - [x] Cart Page
 - [x] Admin Page
-    - Items, edit add and delete
-- [] Order's Page
-    - Display Shipping address, payment method, order items and quantity
-- [] Shipment Page
-    - Form for shipping address, save to user, save in state
-- [] Payment Page
-    - Stripe payment
-- [] Dashboard Page
-    - Recent orders
-    - Favorites
-    - Edit user info
+  - Items, edit add and delete
+- [x] Order's Page
+  - Display Shipping address, payment method, order items and quantity
+- [x] Shipment Page
+  - Form for shipping address, save to user, save in state
+- [x] Payment Page
+  - Stripe payment
+- [x] Dashboard Page
+  - Recent orders
+  - Favorites
+  - Edit user info
 - [x] Menu Page
 - [x] Hot and Iced and Tea and Decaf
 
 ## Styles
-
-

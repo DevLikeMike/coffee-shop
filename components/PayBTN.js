@@ -14,7 +14,9 @@ const PayButton = styled.button`
   background-color: black;
 `;
 
-const payHandler = async (item) => {
+// Items from cart must be an array of objects
+// Each item has name, price, id, quantity and size
+const payHandler = async (itemsFromCart) => {
   const stripe = await loadStripe(STRIPE_PK);
 
   // Next request for get token
@@ -31,7 +33,7 @@ const payHandler = async (item) => {
       Authorization: `Bearer ${token}`,
       "Content-type": "application/json",
     },
-    body: JSON.stringify({ product: { id: item } }),
+    body: JSON.stringify({ products: itemsFromCart }),
   });
 
   const session = await strapiRes.json();
@@ -41,6 +43,6 @@ const payHandler = async (item) => {
   });
 };
 
-export default function PayBTN({ item }) {
-  return <PayButton onClick={() => payHandler(item)} value='Buy' />;
+export default function PayBTN({ itemsFromCart }) {
+  return <PayButton onClick={() => payHandler(itemsFromCart)} value='Buy' />;
 }

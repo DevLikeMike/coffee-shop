@@ -36,7 +36,7 @@ export default function Payment() {
             {cartItems.map((item) => (
               <div key={item.id}>
                 <p>{item.name}</p>
-                <PayBTN item={item.id} />
+                <PayBTN itemsFromCart={cartItems} />
               </div>
             ))}
           </div>
