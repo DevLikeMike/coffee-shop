@@ -52,9 +52,7 @@ export default function dashboard() {
                   </Link>{" "}
                 </p>
                 <p className='p1'>Total ${order.total.toFixed(2)}</p>
-                <p className='p1'>
-                  Purchased on - {order.published_at.slice(0, 10)}
-                </p>
+                <p className='p1'>{order.published_at.slice(0, 10)}</p>
               </div>
             ))}
         </section>
@@ -97,17 +95,6 @@ export default function dashboard() {
               <input type='submit' value='Update' className='update_button' />
             </form>
           )}
-          {/* {user && user.shippingAddress.city !== {} ? (
-            <div className='address-container'>
-              <p>{user.shippingAddress.address}</p>
-              <p>
-                {user.shippingAddress.city} {user.shippingAddress.country},{" "}
-                {user.shippingAddress.postalCode}
-              </p>
-            </div>
-          ) : (
-            <p>No shipping address on File</p>
-          )} */}
         </section>
       </main>
     </Layout>

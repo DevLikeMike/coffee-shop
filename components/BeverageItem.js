@@ -47,7 +47,7 @@ const Card = styled.a`
 `;
 
 export default function BeverageItem({ coffee }) {
-  const { description, name, type, image, price, slug } = coffee;
+  const { name, image, price, slug } = coffee;
 
   return (
     <Link href={`/beverages/${slug}`}>
@@ -62,7 +62,7 @@ export default function BeverageItem({ coffee }) {
         />
         <div className='card__content'>
           <h3 className='title'>{name}</h3>
-          <p className='price'>$ {price}</p>
+          <p className='price'>$ {price.toFixed(2)}</p>
         </div>
       </Card>
     </Link>

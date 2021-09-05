@@ -52,7 +52,7 @@ const SideNav = ({ sideOpen, openHandler }) => {
             <li>
               <Link href='/cart'>
                 <a>
-                  <FaShoppingCart />
+                  <FaShoppingCart /> Cart
                 </a>
               </Link>
             </li>

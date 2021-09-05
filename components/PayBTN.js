@@ -1,9 +1,7 @@
-import Stripe from "stripe";
 import styled from "styled-components";
 import { NEXT_URL } from "@/config/index";
 import { loadStripe } from "@stripe/stripe-js";
 import { STRIPE_PK, API_URL } from "@/config/index";
-import cookie from "cookie";
 
 const PayButton = styled.button`
   margin: 2rem auto 0.25rem;
@@ -11,7 +9,8 @@ const PayButton = styled.button`
   max-width: 30rem;
   padding: 1rem;
   color: #ffffff;
-  background-color: black;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.primaryYellow};
 `;
 
 // Items from cart must be an array of objects
@@ -44,5 +43,9 @@ const payHandler = async (itemsFromCart) => {
 };
 
 export default function PayBTN({ itemsFromCart }) {
-  return <PayButton onClick={() => payHandler(itemsFromCart)} value='Buy' />;
+  return (
+    <PayButton onClick={() => payHandler(itemsFromCart)} value='Buy'>
+      Pay Now
+    </PayButton>
+  );
 }

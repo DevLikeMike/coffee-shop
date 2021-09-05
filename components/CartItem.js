@@ -64,8 +64,8 @@ export default function CartItem({ item, deleteCartItem }) {
         <h2>{name}</h2>
         <p>Size - {size}</p>
         <p>Quantity - {quantity}</p>
-        <p>Subtotal - ${price * quantity}</p>
-        <button onClick={clickHandler}>Delete</button>
+        <p>Subtotal - ${(price * quantity).toFixed(2)}</p>
+        {deleteCartItem && <button onClick={clickHandler}>Delete</button>}
       </div>
     </Item>
   );

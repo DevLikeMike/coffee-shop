@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { API_URL } from "@/config/index";
+import Link from "next/link";
 
 import Layout from "@/components/Layout";
 
@@ -43,10 +44,22 @@ export default function SuccessPage() {
 
   return (
     <Layout>
-      <main className='mt-3'>
-        <h1>Payment Successful</h1>
+      <main className='mt-3 p1 flex col success'>
+        <h1 className='text-center'>Payment Successful, Thank you!</h1>
         {loading && <h2>Loading</h2>}
-        {order && <h2>Your order number is Order: {order.id}</h2>}
+        {order && (
+          <p className='text-center m-1 p1'>
+            Order #: {order.checkout_session.slice(8, 25)}
+          </p>
+        )}
+        <div className='flex flex-center'>
+          <Link href='/'>
+            <a className='link-blue'>Go Back to homepage?</a>
+          </Link>
+          <Link href='/account/dashboard'>
+            <a className='link-blue'>Go to Dashboard?</a>
+          </Link>
+        </div>
       </main>
     </Layout>
   );

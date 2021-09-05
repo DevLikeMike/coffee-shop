@@ -53,7 +53,7 @@ export default function CoffeePage({ coffee }) {
 
         <div className='content'>
           <p>{coffee.description}</p>
-          <div>{coffee.price}</div>
+          <div>${coffee.price.toFixed(2)}</div>
         </div>
         <form onSubmit={submitHandler}>
           <select name='size' id='size' onChange={sizeHandler}>
