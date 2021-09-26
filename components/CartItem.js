@@ -2,11 +2,19 @@ import Image from "next/image";
 import styled from "styled-components";
 
 const Item = styled.div`
-  display: flex;
-  align-items: center;
   padding: 1rem 0.5rem;
-  gap: 1rem;
   min-height: 10rem;
+  h2 {
+    font-size: 2.44rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
   .content-container {
     display: flex;
@@ -16,11 +24,6 @@ const Item = styled.div`
     gap: 0.25rem;
     flex: 1;
     max-width: 20rem;
-
-    h2 {
-      font-size: 1.2rem;
-      text-align: center;
-    }
 
     button {
       background-color: transparent;
@@ -50,22 +53,24 @@ export default function CartItem({ item, deleteCartItem }) {
 
   return (
     <Item>
-      <div className='image-container'>
-        <Image
-          src={image.formats.thumbnail.url}
-          alt={image.name}
-          width='100'
-          height='100'
-          className='thumbnail'
-          layout='fixed'
-        />
-      </div>
-      <div className='content-container'>
-        <h2>{name}</h2>
-        <p>Size - {size}</p>
-        <p>Quantity - {quantity}</p>
-        <p>Subtotal - ${(price * quantity).toFixed(2)}</p>
-        {deleteCartItem && <button onClick={clickHandler}>Delete</button>}
+      <h2 className='text-center'>{name}</h2>
+      <div className='card'>
+        <div className='image-container'>
+          <Image
+            src={image.formats.thumbnail.url}
+            alt={image.name}
+            width='100'
+            height='100'
+            className='thumbnail'
+            layout='fixed'
+          />
+        </div>
+        <div className='content-container'>
+          <p>Size - {size}</p>
+          <p>Quantity - {quantity}</p>
+          <p>Subtotal - ${(price * quantity).toFixed(2)}</p>
+          {deleteCartItem && <button onClick={clickHandler}>Delete</button>}
+        </div>
       </div>
     </Item>
   );

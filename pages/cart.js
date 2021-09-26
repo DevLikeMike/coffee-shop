@@ -27,9 +27,9 @@ export default function CartPage() {
 
   return (
     <Layout>
-      <main className='mt-3'>
+      <main className='mt-3 cart'>
         <h1 className='text-center'>Cart Items</h1>
-        <div className='cart'>
+        <div className=''>
           {cartItems == [] && (
             <>
               <h1>You have no cart items.</h1>

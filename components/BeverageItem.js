@@ -40,7 +40,7 @@ const Card = styled.a`
     padding: 0 0.5rem;
 
     .price {
-      font-size: 1.1rem;
+      font-size: clamp(1.1rem, 3vw + 1rem, 1.75rem);
       font-weight: 600;
     }
   }

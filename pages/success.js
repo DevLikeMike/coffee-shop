@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import { API_URL } from "@/config/index";
 import Link from "next/link";
 
@@ -21,7 +20,6 @@ const useOrder = (session_id) => {
 
         const data = await res.json();
         setOrder(data);
-        console.log(data);
       } catch (error) {
         setOrder(null);
       }
@@ -33,12 +31,7 @@ const useOrder = (session_id) => {
   return { order, loading };
 };
 
-export default function SuccessPage() {
-  // Init router
-  const router = useRouter();
-  // Get session id from query
-  const { session_id } = router.query;
-
+export default function SuccessPage({ session_id }) {
   // Destruct info from the strapi request via custom hook
   const { order, loading } = useOrder(session_id);
 
@@ -48,9 +41,9 @@ export default function SuccessPage() {
         <h1 className='text-center'>Payment Successful, Thank you!</h1>
         {loading && <h2>Loading</h2>}
         {order && (
-          <p className='text-center m-1 p1'>
+          <h2 className='text-center m-1 p1'>
             Order #: {order.checkout_session.slice(8, 25)}
-          </p>
+          </h2>
         )}
         <div className='flex flex-center'>
           <Link href='/'>
@@ -63,4 +56,12 @@ export default function SuccessPage() {
       </main>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ query: { session_id } }) {
+  return {
+    props: {
+      session_id,
+    },
+  };
 }

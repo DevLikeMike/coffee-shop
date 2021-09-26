@@ -42,7 +42,7 @@ export default function ShippingPage() {
 
   return (
     <Layout>
-      <main className='mt-3 shipping'>
+      <main className='mt-3 shipping p2'>
         <h1 className='text-center'>Shipping Info</h1>
         <TrackerContainer>
           <CheckoutTracker href='/shipping'>Shipping</CheckoutTracker>

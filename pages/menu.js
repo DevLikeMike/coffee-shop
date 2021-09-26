@@ -7,14 +7,16 @@ export default function Menu({ categories }) {
     <Layout>
       <main className='mt-3 menu'>
         <section className='p2'>
-          <h2 className='text-center' style={{ margin: "1rem 0" }}>
+          <h1 className='text-center' style={{ margin: "1rem 0" }}>
             Drinks
-          </h2>
-          {categories.length === 0 && <h2>No categories here 😭</h2>}
+          </h1>
+          <div className='item-container'>
+            {categories.length === 0 && <h2>No categories here 😭</h2>}
 
-          {categories.map((category) => (
-            <CategoryItem key={category.id} category={category} />
-          ))}
+            {categories.map((category) => (
+              <CategoryItem key={category.id} category={category} />
+            ))}
+          </div>
         </section>
       </main>
     </Layout>

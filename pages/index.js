@@ -1,4 +1,4 @@
-import BeverageItem from "@/components/BeverageItem";
+import FavoriteItem from "@/components/FavoriteItem";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 
@@ -7,7 +7,7 @@ export default function Home({ coffees }) {
     <Layout>
       <main className='mt-3 homescreen'>
         <div className='hero'>
-          <h1 style={{ color: "#fff" }}>Coffee Cabinet</h1>
+          <h1>Coffee Cabinet</h1>
         </div>
         <section className='flex flex-center'>
           <h2>{"<Coffee To Code By />"}</h2>
@@ -23,11 +23,13 @@ export default function Home({ coffees }) {
           <h2 className='text-center' style={{ margin: "1rem 0" }}>
             Fan Favorites
           </h2>
-          {coffees.length === 0 && <h2>No coffees here 😭</h2>}
+          <div className='fav-container'>
+            {coffees.length === 0 && <h2>No coffees here 😭</h2>}
 
-          {coffees.map((cof) => (
-            <BeverageItem key={cof.id} coffee={cof} />
-          ))}
+            {coffees.map((cof) => (
+              <FavoriteItem key={cof.id} coffee={cof} />
+            ))}
+          </div>
         </section>
       </main>
     </Layout>
